@@ -64,7 +64,7 @@ class HuggingFaceModel(Model):
             return_full_text=False,
             do_sample=False,
         )
-        return [r["generated_text"].strip() for r in response]
+        return [r[0]["generated_text"].strip() for r in response]
     
     def classify(self, input) -> int:
         response = self.pipeline(
@@ -73,4 +73,4 @@ class HuggingFaceModel(Model):
             return_full_text=False,
             do_sample=False,
         )
-        return [r["generated_text"].strip() for r in response]
+        return [r[0]["generated_text"].strip() for r in response]
