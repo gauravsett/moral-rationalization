@@ -27,5 +27,9 @@ class CommonsenseData(Data):
                 continue
             subset = pd.read_csv(self.path + file)
             data = pd.concat([data, subset]).reset_index(drop=True)
-        data = data.loc[data["is_short"] == True][["input", "label"]]
+        data = (
+            data.loc[data["is_short"] == True]
+            .reset_index(drop=True)
+            [["input", "label"]]
+        )
         return data
